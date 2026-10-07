@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sportyfy — Find Your Sports Community</title>
+<meta name="description" content="Sportyfy membantu kamu menemukan teman, komunitas, dan aktivitas olahraga di sekitarmu. Find. Join. Play.">
+<meta property="og:title" content="Sportyfy — Find Your Sports Community">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0A1A44">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' fill='none' stroke-width='6' stroke-linecap='round'%3E%3Crect width='40' height='40' fill='%230A1A44'/%3E%3Cpath d='M34 21.2A14 14 0 0 1 23.6 33.5' stroke='%2319D3F3'/%3E%3Cpath d='M18.8 34A14 14 0 0 1 6.5 23.6' stroke='%23FF7A1A'/%3E%3Cpath d='M6 18.8A14 14 0 0 1 16.4 6.5' stroke='%237B4DFF'/%3E%3Cpath d='M21.2 6A14 14 0 0 1 33.5 16.4' stroke='%23B6F23A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+:root{--blue:#1E6BFF;--cyan:#19D3F3;--navy:#0A1A44;--lime:#B6F23A;--orange:#FF7A1A;--purple:#7B4DFF;--off:#FAF8F4;--white:#fff;--mist:#E6F6FC}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--off);color:var(--navy);overflow-x:hidden}
+h1,h2,h3,.brand{font-family:'Outfit','Inter',sans-serif;font-weight:900;letter-spacing:-.03em;line-height:1}
+h2{font-size:clamp(2.1rem,5.5vw,3.6rem)}
+section{padding:clamp(56px,9vw,104px) 0;position:relative}
+.container{position:relative;z-index:2}
+.deco{position:absolute;pointer-events:none;z-index:1}
+.navbar{background:var(--navy);padding:.65rem 0}
+.brand{display:flex;align-items:center;gap:.5rem;color:#fff!important;font-size:1.6rem}
+.brand svg{width:36px;height:36px}
+.nav-link{color:#c8d3f0!important;font-weight:500}.nav-link:hover{color:var(--lime)!important}
+.navbar-toggler{border-color:rgba(255,255,255,.4)}.navbar-toggler-icon{filter:invert(1)}
+.btn-x{display:inline-block;font-weight:700;border:2px solid transparent;border-radius:14px;padding:.8rem 1.5rem;transition:.2s;text-decoration:none;cursor:pointer;background:none}
+.btn-lime{background:var(--lime);color:var(--navy)}.btn-lime:hover{background:#fff;color:var(--navy);transform:translateY(-3px);box-shadow:0 8px 0 -2px var(--orange)}
+.btn-blue{background:var(--blue);color:#fff}.btn-blue:hover{background:var(--navy);color:#fff;transform:translateY(-3px)}
+.btn-out{border-color:var(--navy);color:var(--navy)}.btn-out:hover{background:var(--navy);color:#fff;transform:translateY(-3px)}
+.btn-out-w{border-color:#fff;color:#fff}.btn-out-w:hover{background:#fff;color:var(--blue);transform:translateY(-3px)}
+.ph{position:relative;overflow:hidden;background:var(--mist)}
+.ph::after{content:attr(data-e);position:absolute;inset:0;display:grid;place-items:center;font-size:3.2rem}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;transition:transform .7s}
+.zoom:hover .ph img{transform:scale(1.07)}
+/* hero */
+.hero{padding-top:clamp(28px,5vw,60px);overflow:hidden}
+.hero h1{font-size:clamp(3.8rem,12vw,8.5rem);margin-bottom:.2em}
+.hero h1 .j{color:var(--blue)}.hero h1 .p{color:var(--purple)}
+.hero .sub{font:800 clamp(1.25rem,2.6vw,1.8rem)/1.1 'Outfit';letter-spacing:-.02em;margin-bottom:1rem}
+.hero p.d{max-width:40ch;font-size:1.1rem;color:#46527a}
+.pill{display:inline-flex;align-items:center;gap:.5rem;background:#fff;border:1px solid rgba(10,26,68,.12);border-radius:999px;padding:.3rem .9rem .3rem .4rem;font-weight:600;font-size:.9rem;margin-bottom:1.2rem}
+.pill svg{width:26px;height:26px}
+.collage{position:relative;height:clamp(430px,64vw,620px)}
+.collage .a{position:absolute;right:0;top:0;width:76%;height:80%;border-radius:200px 28px 28px 28px;border:4px solid var(--navy)}
+.collage .b,.collage .c{position:absolute;z-index:3;border-radius:22px;border:5px solid var(--off);box-shadow:0 12px 28px rgba(10,26,68,.2);transition:transform .3s}
+.collage .b{left:0;top:34%;width:36%;height:27%;transform:rotate(-5deg)}
+.collage .c{right:6%;bottom:0;width:42%;height:30%;transform:rotate(4deg)}
+.collage .b:hover,.collage .c:hover{transform:rotate(0) scale(1.04)}
+.chip{position:absolute;z-index:4;border-radius:12px;padding:.35rem .8rem;font:800 .85rem 'Outfit'}
+.chip.o{background:var(--orange);left:6%;bottom:30%;transform:rotate(-8deg)}
+.chip.l{background:var(--lime);right:-1%;top:46%;transform:rotate(6deg)}
+.chip.v{background:var(--purple);color:#fff;left:8%;top:6%;transform:rotate(-4deg)}
+/* intro */
+.intro{background:var(--navy);color:#fff;padding:clamp(40px,6vw,72px) 0}
+.intro p{font:700 clamp(1.4rem,3.2vw,2.3rem)/1.2 'Outfit';letter-spacing:-.02em;max-width:30ch;margin:0}
+.intro .stat b{display:block;font:900 2.4rem 'Outfit'}
+/* sports */
+.sports{background:#fff}
+.sg{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(200px,26vw,280px);gap:16px}
+.sport{position:relative;border-radius:24px;overflow:hidden;transition:.25s;--ac:var(--blue);--tx:#fff;color:#fff}
+.sport .ph{position:absolute;inset:0}
+.sport::before{content:"";position:absolute;inset:0;background:rgba(10,26,68,.45);z-index:2}
+.sport:hover{transform:translateY(-5px)}
+.sport .in{position:absolute;z-index:3;left:0;right:0;bottom:0;padding:1rem;display:flex;justify-content:space-between;align-items:flex-end;gap:.5rem}
+.sport .lb{display:inline-block;background:var(--ac);color:var(--tx);font:800 1.15rem 'Outfit';border-radius:12px;padding:.4rem .85rem}
+.sport small{display:block;margin-top:.4rem;opacity:.9}
+.sport .ex{background:#fff;color:var(--navy);font-weight:700;font-size:.85rem;border-radius:10px;padding:.4rem .8rem;text-decoration:none;white-space:nowrap;transition:.2s}
+.sport .ex:hover{background:var(--ac);color:var(--tx)}
+.sg .s0{grid-column:span 7;grid-row:span 2}.sg .s1{grid-column:span 5}.sg .s2{grid-column:span 5}
+.sg .s3,.sg .s4,.sg .s5{grid-column:span 4}
+@media(max-width:767px){.sg{grid-template-columns:1fr 1fr}.sg .sport{grid-column:span 1!important;grid-row:span 1!important}.sg .s0{grid-column:span 2!important}.sport .in{flex-direction:column;align-items:flex-start}}
+/* communities */
+.cs{background:var(--off)}
+.cg{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:310px;gap:18px}
+.com{position:relative;border-radius:24px;overflow:hidden;display:flex;flex-direction:column;border:1px solid rgba(10,26,68,.12);box-shadow:0 8px 22px rgba(10,26,68,.08);transition:transform .3s,box-shadow .3s;--ac:var(--blue);--tx:#fff}
+.com:hover{transform:translateY(-7px);box-shadow:0 20px 40px rgba(10,26,68,.2)}
+.com .ph{flex:1;min-height:0}
+.com .bd{padding:1rem 1.2rem 1.2rem}
+.com h3{font-size:clamp(1.3rem,2.4vw,2rem);margin:.5rem 0}
+.com .m{display:flex;gap:.9rem;flex-wrap:wrap;font-size:.92rem;margin-bottom:.8rem;opacity:.85}
+.tg{display:inline-block;background:var(--ac);color:var(--tx);font:800 .8rem 'Outfit';border-radius:8px;padding:.2rem .6rem}
+.com .btn-x{padding:.45rem 1rem;font-size:.9rem;background:var(--ac);color:var(--tx)}
+.com .btn-x:hover{transform:translateY(-2px);filter:brightness(1.1)}
+.v-w{background:#fff;border-top:6px solid var(--ac)}.v-n{background:var(--navy);color:#fff}
+.v-p{color:#fff}.v-p .ph{position:absolute;inset:0}.v-p::before{content:"";position:absolute;inset:0;background:rgba(10,26,68,.52);z-index:2}
+.v-p .bd{position:absolute;z-index:3;left:0;right:0;bottom:0}
+.cg .c1{grid-column:span 5;grid-row:span 2}.cg .c2{grid-column:span 7}.cg .c3{grid-column:span 3}.cg .c4{grid-column:span 4}.cg .c5{grid-column:span 7}.cg .c6{grid-column:span 5}
+@media(max-width:991px){.cg{grid-template-columns:repeat(2,1fr)}.cg .com{grid-column:span 1!important;grid-row:span 1!important}.cg .c1{grid-column:span 2!important}}
+@media(max-width:575px){.cg{grid-template-columns:1fr;grid-auto-rows:340px}.cg .com,.cg .c1{grid-column:span 1!important}}
+/* why / how */
+.why{background:var(--mist);border-radius:48px 48px 0 0}
+.wc{background:#fff;border:1px solid rgba(10,26,68,.1);border-radius:22px;padding:1.5rem;height:100%;transition:.3s}
+.wc:hover{transform:translateY(-6px);box-shadow:0 14px 30px rgba(10,26,68,.12)}
+.wc .dot{width:46px;height:46px;border-radius:50%;margin-bottom:1.2rem;background:var(--c)}
+.wc h3{font-size:1.4rem;margin-bottom:.5rem}.wc p{margin:0;color:#46527a}
+.how{background:var(--navy);color:#fff;border-radius:48px;margin:0 clamp(0px,1.5vw,20px)}
+.how h2{color:#fff}
+.st .n{width:84px;height:84px;border-radius:50%;display:grid;place-items:center;font:900 1.9rem 'Outfit';margin-bottom:1.2rem;color:var(--navy);transition:.3s}
+.st:hover .n{transform:rotate(-10deg) scale(1.08)}
+.st h3{font-size:1.9rem;margin-bottom:.5rem}.st p{color:#b9c6ea;margin:0}
+/* blog */
+.bc{display:flex;flex-direction:column;background:#fff;border:1px solid rgba(10,26,68,.12);border-radius:22px;overflow:hidden;text-decoration:none;color:var(--navy);height:100%;transition:.3s;--ac:var(--blue);--tx:#fff}
+.bc:hover{transform:translateY(-6px);box-shadow:0 16px 34px rgba(10,26,68,.16);color:var(--navy)}
+.bc .ph{height:200px;flex:none}
+.bc .bd{padding:1.1rem 1.2rem 1.3rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+.bc h3{font-size:1.3rem;line-height:1.1}
+.bc p{margin:0;color:#46527a;font-size:.95rem}
+.bc .dt,.dt{font-size:.85rem;color:#6a7497}
+.cat{display:inline-block;align-self:flex-start;background:var(--ac);color:var(--tx);font:800 .78rem 'Outfit';border-radius:8px;padding:.2rem .6rem}
+.feat{display:grid;grid-template-columns:1.2fr 1fr;background:var(--navy);color:#fff;border-radius:28px;overflow:hidden;text-decoration:none;--ac:var(--cyan);--tx:#0A1A44;transition:.3s}
+.feat:hover{color:#fff;box-shadow:0 20px 44px rgba(10,26,68,.28)}
+.feat .ph{min-height:320px}
+.feat .bd{padding:clamp(1.4rem,4vw,3rem);display:flex;flex-direction:column;justify-content:center;gap:1rem}
+.feat h2{font-size:clamp(1.8rem,3.6vw,2.8rem)}.feat p{color:#b9c6ea;margin:0}.feat .dt{color:#8c9bc8}
+@media(max-width:767px){.feat{grid-template-columns:1fr}}
+.fp{border:2px solid var(--navy);background:#fff;color:var(--navy);font-weight:700;border-radius:999px;padding:.4rem 1rem;transition:.2s}
+.fp:hover{background:var(--mist)}.fp.on{background:var(--navy);color:#fff}
+.page-h{padding:clamp(40px,6vw,72px) 0 clamp(24px,4vw,40px);background:var(--mist);position:relative;overflow:hidden}
+.page-h h1{font-size:clamp(2.6rem,8vw,5.5rem)}
+.art-hero{border-radius:28px;height:clamp(240px,45vw,460px)}
+.prose{max-width:68ch;margin:0 auto;font-size:1.12rem;line-height:1.75}
+.prose h3{font-size:1.6rem;margin:2rem 0 .8rem}
+.ctab{background:var(--blue);color:#fff;border-radius:26px;padding:clamp(1.5rem,4vw,2.5rem);display:flex;flex-wrap:wrap;gap:1.2rem;justify-content:space-between;align-items:center;max-width:68ch;margin:2.5rem auto 0}
+.ctab h3{font-size:clamp(1.5rem,3vw,2rem);margin:0;max-width:16ch}
+.back{font-weight:700;color:var(--navy);text-decoration:none}.back:hover{color:var(--blue)}
+/* cta */
+.cta{background:var(--blue);border-radius:36px;overflow:hidden;display:grid;grid-template-columns:1.1fr .9fr;min-height:440px;position:relative}
+.cta .txt{padding:clamp(1.8rem,5vw,4rem);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:1.6rem;color:#fff;position:relative;z-index:2}
+.cta h2{font-size:clamp(2.2rem,5vw,3.8rem)}
+.cta .ph{border-radius:200px 0 0 200px;min-height:260px}
+@media(max-width:767px){.cta{grid-template-columns:1fr}.cta .ph{order:-1;height:250px;border-radius:0 0 120px 120px}}
+footer{background:var(--navy);color:#b9c6ea;padding:70px 0 32px}
+footer a{color:#b9c6ea;text-decoration:none}footer a:hover{color:var(--lime)}
+footer h3{font-size:1rem;color:#fff;letter-spacing:0;margin-bottom:.8rem}
+.soc a{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:12px;border:1px solid #2e4278;margin-right:8px;color:#fff;transition:.2s}
+.soc a:hover{background:var(--lime);color:var(--navy);transform:translateY(-3px)}
+.soc svg{width:18px;height:18px;fill:currentColor}
+.rv{opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
+[hidden]{display:none!important}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><symbol id="logo" viewBox="0 0 40 40" fill="none" stroke-width="6" stroke-linecap="round"><path d="M34 21.2A14 14 0 0 1 23.6 33.5" stroke="#19D3F3"/><path d="M18.8 34A14 14 0 0 1 6.5 23.6" stroke="#FF7A1A"/><path d="M6 18.8A14 14 0 0 1 16.4 6.5" stroke="#7B4DFF"/><path d="M21.2 6A14 14 0 0 1 33.5 16.4" stroke="#B6F23A"/><circle cx="20" cy="20" r="3.5" fill="#1E6BFF" stroke="none"/></symbol></svg>
+
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand brand" href="#home"><svg aria-hidden="true"><use href="#logo"/></svg>Sportyfy</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-label="Buka menu"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link" href="#sports">Sports</a></li>
+        <li class="nav-item"><a class="nav-link" href="#communities">Communities</a></li>
+        <li class="nav-item"><a class="nav-link" href="#why">Why Sportyfy</a></li>
+        <li class="nav-item"><a class="nav-link" href="#how">How It Works</a></li>
+        <li class="nav-item"><a class="nav-link" href="#/blog">Blog</a></li>
+      </ul>
+      <a data-app class="btn-x btn-lime mt-3 mt-lg-0">Get Started</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ LANDING ============ -->
+<main id="v-home">
+<header class="hero" id="home">
+  <svg class="deco" style="right:-120px;top:-100px;width:520px" viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="80" stroke="#19D3F3" stroke-width="14" stroke-dasharray="330 180" stroke-linecap="round"/></svg>
+  <svg class="deco" style="left:-90px;bottom:-60px;width:300px" viewBox="0 0 200 200"><circle cx="100" cy="100" r="90" fill="#B6F23A" opacity=".55"/></svg>
+  <div class="container"><div class="row align-items-center g-4 pb-5">
+    <div class="col-lg-6">
+      <span class="pill"><svg aria-hidden="true"><use href="#logo"/></svg>Find Your Sports Community</span>
+      <h1>Find. <span class="j">Join.</span> <span class="p">Play.</span></h1>
+      <h2 class="sub">Find Your Sport. Find Your People.</h2>
+      <p class="d">Sportyfy membantu mahasiswa dan anak muda menemukan teman, komunitas, dan aktivitas olahraga yang cocok dengan minat mereka.</p>
+      <div class="d-flex flex-wrap gap-3 mt-4">
+        <a data-app class="btn-x btn-blue">Get Started</a>
+        <a href="#how" class="btn-x btn-out">How It Works</a>
+      </div>
+    </div>
+    <div class="col-lg-6"><div class="collage">
+      <div class="ph a" data-e="🏸"><img alt="Anak muda bermain badminton bersama" data-k="badminton" data-i="1" data-w="900" data-eager><img src="foto/badminton.jpg"></div>
+      <div class="ph b" data-e="🏀"><img alt="Pemain basket sedang melompat" data-k="basketball" data-i="2" data-w="500" data-eager><img src="foto/basket.jpg"></div>
+      <div class="ph c" data-e="🛹"><img alt="Skateboarder di taman kota" data-k="skateboard" data-i="3" data-w="500" data-eager><img src="foto/skate.jpg"></div>
+      <span class="chip v">10+ anggota</span><span class="chip l">Main malam ini</span><span class="chip o">6 cabang olahraga</span>
+    </div></div>
+  </div></div>
+</header>
+
+<div class="intro"><div class="container"><div class="row align-items-center g-4">
+  <div class="col-lg-7"><p>Sportyfy adalah tempat kamu menemukan teman, komunitas, dan aktivitas olahraga di sekitarmu, lalu langsung bergabung lewat aplikasi.</p></div>
+  <div class="col-lg-5"><div class="row text-center text-lg-start">
+    <div class="col stat"><b style="color:var(--lime)">6+</b>olahraga</div>
+    <div class="col stat"><b style="color:var(--cyan)">10+</b>komunitas</div>
+    <div class="col stat"><b style="color:var(--orange)">10+</b>anggota</div>
+  </div></div>
+</div></div></div>
+
+<section id="sports" class="sports">
+  <div class="container">
+    <h2 class="mb-2 rv">Explore Sports</h2>
+    <p class="mb-4">Preview singkat. Detail komunitas dan jadwalnya ada di aplikasi.</p>
+    <div class="sg" id="sportGrid"></div>
+  </div>
+</section>
+
+<section id="communities" class="cs">
+  <div class="container">
+    <h2 class="mb-4 rv">Featured Communities</h2>
+    <div class="cg" id="comGrid"></div>
+  </div>
+</section>
+
+<section id="why" class="why">
+  <svg class="deco" style="right:-60px;top:20px;width:200px" viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="70" stroke="#FF7A1A" stroke-width="16" stroke-dasharray="200 240" stroke-linecap="round"/></svg>
+  <div class="container">
+    <h2 class="mb-5 rv">Why Sportyfy?</h2>
+    <div class="row g-4">
+      <div class="col-sm-6 col-lg-3 rv"><div class="wc" style="--c:var(--blue)"><div class="dot"></div><h3>Find Your People</h3><p>Temukan teman dengan minat olahraga yang sama.</p></div></div>
+      <div class="col-sm-6 col-lg-3 rv"><div class="wc" style="--c:var(--lime)"><div class="dot"></div><h3>Discover Communities</h3><p>Temukan komunitas olahraga di sekitarmu.</p></div></div>
+      <div class="col-sm-6 col-lg-3 rv"><div class="wc" style="--c:var(--orange)"><div class="dot"></div><h3>Join Activities</h3><p>Ikut aktivitas olahraga bersama.</p></div></div>
+      <div class="col-sm-6 col-lg-3 rv"><div class="wc" style="--c:var(--purple)"><div class="dot"></div><h3>Easy &amp; Connected</h3><p>Semua informasi aktivitas dalam satu platform.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="how">
+  <svg class="deco" style="left:-70px;bottom:-50px;width:240px" viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="70" stroke="#19D3F3" stroke-width="16" stroke-dasharray="220 220" stroke-linecap="round"/></svg>
+  <div class="container">
+    <h2 class="mb-5 rv">How Sportyfy Works</h2>
+    <div class="row g-5">
+      <div class="col-md-4 rv"><div class="st"><div class="n" style="background:var(--lime)">01</div><h3>Explore</h3><p>Cari olahraga atau komunitas yang kamu suka.</p></div></div>
+      <div class="col-md-4 rv"><div class="st"><div class="n" style="background:var(--orange)">02</div><h3>Connect</h3><p>Temukan orang dan komunitas dengan minat yang sama.</p></div></div>
+      <div class="col-md-4 rv"><div class="st"><div class="n" style="background:var(--cyan)">03</div><h3>Join</h3><p>Gabung dan mulai olahraga bersama di aplikasi.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+      <h2 class="m-0 rv">Dari Blog Sportyfy</h2>
+      <a href="#/blog" class="btn-x btn-out">Lihat semua artikel</a>
+    </div>
+    <div class="row g-4" id="homeBlog"></div>
+  </div>
+</section>
+
+<section class="pt-0">
+  <div class="container">
+    <div class="cta rv">
+      <svg class="deco" style="left:-60px;top:-60px;width:220px" viewBox="0 0 200 200"><circle cx="100" cy="100" r="90" fill="#7B4DFF" opacity=".6"/></svg>
+      <div class="txt">
+        <h2>Ready to find your community?</h2>
+        <div class="d-flex flex-wrap gap-3">
+          <a data-app class="btn-x btn-lime">Find Your Community →</a>
+          <a data-app class="btn-x btn-out-w">Download App</a>
+        </div>
+      </div>
+      <div class="ph">
+  <img src="foto/badminton.jpg" alt="Sekelompok teman bermain futsal">
+</div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ BLOG ============ -->
+<main id="v-blog" hidden>
+  <div class="page-h">
+    <svg class="deco" style="right:-80px;top:-80px;width:320px" viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="80" stroke="#7B4DFF" stroke-width="14" stroke-dasharray="300 200" stroke-linecap="round"/></svg>
+    <div class="container"><h1>Sportyfy Blog</h1><p class="mt-3 mb-0" style="max-width:46ch;font-size:1.1rem">Tips olahraga, panduan pemula, dan cerita komunitas untuk kamu yang ingin mulai bergerak.</p></div>
+  </div>
+  <section style="padding-top:36px">
+    <div class="container">
+      <div class="d-flex flex-wrap gap-2 mb-4" id="filters" role="group" aria-label="Kategori artikel"></div>
+      <div id="featBox"></div>
+      <div class="row g-4 mt-1" id="blogGrid"></div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ ARTIKEL ============ -->
+<main id="v-art" hidden>
+  <section style="padding-bottom:40px"><div class="container" id="artBox"></div></section>
+  <section class="pt-0"><div class="container"><h2 class="mb-4" style="font-size:2rem">Artikel lainnya</h2><div class="row g-4" id="related"></div></div></section>
+</main>
+
+<footer id="contact">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-5">
+        <div class="brand mb-2"><svg aria-hidden="true"><use href="#logo"/></svg>Sportyfy</div>
+        <p>Find Your Sports Community.</p>
+        <div class="soc">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM17.5 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg></a>
+          <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.2 2h3.3l-7.2 8.3L22.8 22h-6.6l-5.2-6.8L5 22H1.7l7.7-8.8L1.2 2h6.8l4.7 6.2L18.2 2zm-1.2 18h1.8L7 3.9H5.1L17 20z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3L10 15z"/></svg></a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2"><h3>About</h3><a href="#why">Why Sportyfy</a><br><a href="#how">How It Works</a></div>
+      <div class="col-6 col-lg-2"><h3>Explore</h3><a href="#sports">Sports</a><br><a href="#communities">Communities</a><br><a href="#/blog">Blog</a></div>
+      <div class="col-lg-3"><h3>Contact</h3><a href="mailto:hellosportyfy@gmail.com">hellosportyfy@gmai.com</a></div>
+    </div>
+    <hr style="border-color:#26376a;margin:2rem 0 1rem"><small>© 2026 Sportyfy. Semua hak dilindungi.</small>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Ganti dengan tautan aplikasi Sportyfy (web app / Google Play / App Store)
+const APP_URL='https://app.sportyfy.id';
+const $=s=>document.querySelector(s);
+const photo=(k,i,w=720)=>`https://loremflickr.com/${w}/${Math.round(w*.72)}/${k}?lock=${i}`;
+const sp={
+  Badminton:["🏸","#1E6BFF","#fff","Rally seru, level apa pun","foto/bulutangkis.jpg"],
+  Futsal:["⚽","#B6F23A","#0A1A44","Main bareng tiap pekan","foto/futsal.jpg"],
+  Basketball:["🏀","#FF7A1A","#0A1A44","Pickup game dan sparring","foto/basket.jpg"],
+  Running:["🏃","#19D3F3","#0A1A44","Lari santai sampai target 10K","foto/running.jpg"],
+  Skateboard:["🛹","#7B4DFF","#fff","Sesi bareng di spot kota","foto/skateboard.jpg"],
+  Volleyball:["🏐","#FF7A1A","#0A1A44","Tim kampus dan komunitas","foto/volleyball.jpg"]
+};
+const sty=s=>`--ac:${sp[s][1]};--tx:${sp[s][2]}`;
+const coms=[
+  {n:"Solo Runners",s:"Running",l:"Surakarta",m:5,v:"p",img:"foto/running.jpg"},
+  {n:"Solo Badminton Community",s:"Badminton",l:"Surakarta",m:4,v:"w",img:"foto/bulutangkis.jpg"},
+  {n:"Skateboard Solo",s:"Skateboard",l:"Surakarta",m:3,v:"n",img:"foto/skatee.jpg"},
+  {n:"Solo Futsal Squad",s:"Futsal",l:"Sukoharjo",m:21,v:"p",img:"foto/futsal.jpg"},
+  {n:"Hoops Jogja",s:"Basketball",l:"sukoharjo",m:4,v:"w",img:"foto/baskett.jpg"},
+  {n:"Spike Club Kampus",s:"Volleyball",l:"wonogiri",m:2,v:"n",img:"foto/voli.jpg"}
+];
+const CAT={"Sports Tips":["#B6F23A","#0A1A44"],"Community":["#1E6BFF","#fff"],"Lifestyle":["#FF7A1A","#0A1A44"],"Beginner Guide":["#19D3F3","#0A1A44"],"Sportyfy News":["#7B4DFF","#fff"]};
+const ARTS=[
+ {id:"cara-menemukan-komunitas-olahraga-pemula",t:"Cara Menemukan Komunitas Olahraga yang Cocok untuk Pemula",c:"Beginner Guide",d:"2026-09-24",r:5,k:"running",ex:"Baru mulai olahraga dan bingung harus gabung ke mana? Ikuti langkah sederhana ini untuk menemukan komunitas yang pas.",
+  b:["Mulai olahraga sendirian sering terasa berat. Komunitas membuatnya lebih mudah karena ada teman, jadwal, dan alasan untuk datang. Masalahnya, tidak semua komunitas cocok untuk pemula.","### 1. Pilih olahraga yang paling kamu penasaran","Jangan mulai dari yang paling populer. Pilih yang terasa menyenangkan, entah itu lari santai, badminton, atau futsal. Kamu lebih mudah konsisten dengan olahraga yang kamu nikmati.","### 2. Cari komunitas di sekitarmu","Lokasi menentukan seberapa sering kamu bisa hadir. Pilih komunitas yang bisa dijangkau dalam 20 sampai 30 menit dari kampus atau tempat tinggal.","### 3. Cek apakah ramah pemula","Lihat apakah ada sesi untuk semua level, jadwal yang jelas, dan anggota yang terbuka menyambut orang baru. Datang sekali sebagai percobaan sebelum memutuskan bergabung.","Dengan Sportyfy, kamu bisa menjelajahi komunitas olahraga di sekitarmu dan langsung bergabung lewat aplikasi."]},
+ {id:"5-manfaat-bergabung-komunitas-olahraga",t:"5 Manfaat Bergabung dengan Komunitas Olahraga",c:"Community",d:"2026-09-18",r:4,k:"volleyball",ex:"Bukan hanya soal badan yang bugar. Ini lima alasan komunitas membuat olahragamu lebih bertahan lama.",
+  b:["Olahraga dalam kelompok sering terasa lebih ringan daripada sendirian. Berikut lima manfaat yang paling sering dirasakan anggota komunitas.","### 1. Lebih konsisten","Jadwal bersama dan teman yang menunggu membuatmu lebih sulit membatalkan rencana.","### 2. Dapat teman baru","Kamu bertemu orang dengan minat yang sama, dan obrolan terasa lebih mudah dimulai.","### 3. Lebih termotivasi","Melihat teman berkembang bisa memberi dorongan untuk ikut berkembang.","### 4. Belajar dari yang lebih berpengalaman","Anggota lain bisa berbagi teknik, tips, dan rekomendasi perlengkapan.","### 5. Olahraga jadi lebih seru","Permainan, tantangan, dan tawa membuat sesi latihan terasa seperti hiburan, bukan kewajiban."]},
+ {id:"olahraga-bareng-teman-vs-sendiri",t:"Olahraga Bareng Teman vs Sendiri, Mana yang Lebih Seru?",c:"Lifestyle",d:"2026-09-10",r:4,k:"futsal",ex:"Dua-duanya punya kelebihan. Kenali kapan cocok berolahraga sendiri dan kapan lebih enak bareng-bareng.",
+  b:["Tidak ada jawaban tunggal. Keduanya punya tempat masing-masing dalam rutinitas olahraga.","### Olahraga sendiri","Kamu bebas menentukan waktu dan tempo. Cocok untuk lari pagi, latihan ringan, atau saat jadwalmu padat.","### Olahraga bareng teman","Suasananya lebih hidup dan kamu punya tanggung jawab untuk datang. Olahraga tim seperti futsal, voli, dan basket memang paling seru dimainkan bersama.","### Kombinasi terbaik","Banyak orang memadukan keduanya: latihan mandiri di hari biasa, lalu bermain bersama komunitas di akhir pekan. Coba dua-duanya dan lihat mana yang paling cocok."]},
+ {id:"rekomendasi-olahraga-untuk-pemula",t:"Rekomendasi Olahraga untuk Kamu yang Baru Mulai",c:"Sports Tips",d:"2026-09-02",r:5,k:"badminton",ex:"Bingung mau mulai dari mana? Ini beberapa olahraga yang mudah dicoba dan tidak butuh banyak perlengkapan.",
+  b:["Memulai kebiasaan olahraga paling mudah dengan pilihan yang sederhana dan terjangkau.","### Lari santai","Cukup sepatu yang nyaman. Mulai dengan jarak pendek dan tambah pelan-pelan.","### Badminton","Mudah dipelajari dan bisa dimainkan berpasangan. Banyak lapangan dan komunitas yang menerima pemula.","### Futsal","Seru dimainkan ramai-ramai. Tidak perlu jago untuk ikut bermain santai.","### Voli","Cocok untuk kamu yang suka kerja tim dan permainan yang cepat.","Dengarkan tubuhmu, mulai pelan, dan jangan lupa pemanasan. Kalau punya kondisi kesehatan tertentu, konsultasikan dulu dengan tenaga kesehatan."]},
+ {id:"sportyfy-temukan-komunitas-olahraga",t:"Sportyfy: Temukan Komunitas Olahraga di Sekitarmu",c:"Sportyfy News",d:"2026-08-28",r:3,k:"basketball",ex:"Kenalan dengan Sportyfy, platform untuk menemukan teman, komunitas, dan aktivitas olahraga.",
+  b:["Sportyfy dibuat untuk membantu orang menemukan komunitas olahraga yang sesuai minat, terutama mahasiswa dan anak muda yang ingin rutin bergerak tetapi belum punya teman olahraga.","### Apa yang bisa kamu lakukan","Jelajahi berbagai olahraga, temukan komunitas di sekitarmu, lalu gabung dan ikut aktivitasnya lewat aplikasi.","### Untuk komunitas","Komunitas olahraga juga bisa mendapatkan anggota baru dan membagikan jadwal aktivitas dalam satu tempat.","Website ini adalah pintu masuk. Untuk bergabung dan melihat detail aktivitas, lanjutkan ke aplikasi Sportyfy."]}
+];
+const fmt=d=>new Date(d).toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric'});
+const catSty=c=>`--ac:${CAT[c][0]};--tx:${CAT[c][1]}`;
+const img=(k,i,e,alt,w,eager)=>`<div class="ph" data-e="${e}"><img alt="${alt}" data-k="${k}" data-i="${i}" data-w="${w}"${eager?' data-eager':''}></div>`;
+const EM={running:"🏃",volleyball:"🏐",futsal:"⚽",badminton:"🏸",basketball:"🏀"};
+const card=a=>`<div class="col-md-6 col-lg-4 rv"><a class="bc zoom" style="${catSty(a.c)}" href="#/blog/${a.id}">${img(a.k,a.id.length,EM[a.k],'Ilustrasi artikel: '+a.t,640)}<div class="bd"><span class="cat">${a.c}</span><h3>${a.t}</h3><p>${a.ex}</p><span class="dt mt-auto">${fmt(a.d)} · ${a.r} menit baca</span></div></a></div>`;
+
+function hydrate(){document.querySelectorAll('img[data-k]:not([src])').forEach(el=>{el.onerror=()=>el.remove();if(!el.hasAttribute('data-eager'))el.loading='lazy';else el.fetchPriority='high';el.decoding='async';el.src=photo(el.dataset.k,el.dataset.i,+el.dataset.w||720)})}
+let io;function reveal(){io=io||new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll('.rv:not(.in)').forEach(el=>io.observe(el))}
+function setApp(){document.querySelectorAll('[data-app]').forEach(a=>{a.href=APP_URL;a.target='_blank';a.rel='noopener'})}
+
+// landing
+$('#sportGrid').innerHTML=Object.keys(sp).map((s,i)=>`<div class="sport zoom s${i}" style="${sty(s)}"><div class="ph"><img src="${sp[s][4]}" alt="Olahraga ${s}"></div><div class="in"><div><span class="lb">${sp[s][0]} ${s}</span><small>${sp[s][3]}</small></div><a data-app class="ex">Explore</a></div></div>`).join('');
+$('#comGrid').innerHTML=coms.map((c,i)=>`<article class="com zoom v-${c.v} c${i+1}" style="${sty(c.s)}"><div class="ph"><img src="${c.img}" alt="Komunitas ${c.n}"></div><div class="bd"><span class="tg">${sp[c.s][0]} ${c.s}</span><h3>${c.n}</h3><div class="m"><span>📍 ${c.l}</span><span>👥 ${c.m} anggota</span></div><a data-app class="btn-x">Explore</a></div></article>`).join('');
+
+// blog
+let cat='Semua';
+function renderBlog(){
+  $('#filters').innerHTML=['Semua',...Object.keys(CAT)].map(c=>`<button class="fp${c===cat?' on':''}" data-c="${c}" aria-pressed="${c===cat}">${c}</button>`).join('');
+  const list=cat==='Semua'?ARTS:ARTS.filter(a=>a.c===cat);
+  const f=cat==='Semua'?ARTS[0]:null, rest=f?list.slice(1):list;
+  $('#featBox').innerHTML=f?`<a class="feat zoom" style="${catSty(f.c)}" href="#/blog/${f.id}">${img(f.k,f.id.length,EM[f.k],'Gambar utama: '+f.t,900,1)}<div class="bd"><span class="cat">Featured · ${f.c}</span><h2>${f.t}</h2><p>${f.ex}</p><span class="dt">${fmt(f.d)} · ${f.r} menit baca</span></div></a>`:'';
+  $('#blogGrid').innerHTML=rest.length?rest.map(card).join(''):'<p>Belum ada artikel di kategori ini.</p>';
+  hydrate();reveal();
+}
+$('#filters').addEventListener('click',e=>{const b=e.target.closest('.fp');if(b){cat=b.dataset.c;renderBlog()}});
+
+// artikel
+function renderArt(a){
+  const body=a.b.map(p=>p.startsWith('### ')?`<h3>${p.slice(4)}</h3>`:`<p>${p}</p>`).join('');
+  $('#artBox').innerHTML=`<a class="back" href="#/blog">← Semua artikel</a><div class="prose mt-4 mb-4" style="${catSty(a.c)}"><span class="cat">${a.c}</span><h1 class="mt-3 mb-3" style="font-size:clamp(2rem,5vw,3.4rem)">${a.t}</h1><span class="dt">${fmt(a.d)} · ${a.r} menit baca</span></div>${img(a.k,a.id.length,EM[a.k],'Gambar artikel: '+a.t,1100,1).replace('class="ph"','class="ph art-hero"')}<article class="prose mt-5">${body}</article><div class="ctab"><h3>Ready to find your community?</h3><a data-app class="btn-x btn-lime">Find Your Community →</a></div>`;
+  $('#related').innerHTML=ARTS.filter(x=>x.id!==a.id).slice(0,3).map(card).join('');
+  setApp();hydrate();reveal();
+  let ld=$('#ld');if(!ld){ld=document.createElement('script');ld.type='application/ld+json';ld.id='ld';document.head.appendChild(ld)}
+  ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"Article",headline:a.t,datePublished:a.d,description:a.ex,articleSection:a.c,publisher:{"@type":"Organization",name:"Sportyfy"}});
+}
+
+// router
+function seo(t,d){document.title=t;$('meta[name=description]').content=d}
+function show(v){['home','blog','art'].forEach(x=>$('#v-'+x).hidden=x!==v)}
+function route(){
+  const h=location.hash, top=()=>scrollTo({top:0,behavior:'instant'});
+  const lde=$('#ld');if(lde)lde.textContent='';
+  if(h.startsWith('#/blog/')){const a=ARTS.find(x=>x.id===h.slice(7));if(a){renderArt(a);show('art');seo(a.t+' | Sportyfy Blog',a.ex);top();return}}
+  if(h.startsWith('#/blog')){renderBlog();show('blog');seo('Blog Sportyfy — Tips Olahraga & Komunitas','Tips olahraga, panduan pemula, dan cerita komunitas dari Sportyfy.');top();return}
+  show('home');seo('Sportyfy — Find Your Sports Community','Sportyfy membantu kamu menemukan teman, komunitas, dan aktivitas olahraga di sekitarmu. Find. Join. Play.');
+  const el=h.length>1&&document.getElementById(h.slice(1));
+  el?el.scrollIntoView():top();
+  hydrate();reveal();
+}
+addEventListener('hashchange',route);
+document.querySelectorAll('.navbar a').forEach(a=>a.addEventListener('click',()=>{const n=$('#nav');if(n.classList.contains('show'))bootstrap.Collapse.getOrCreateInstance(n).hide()}));
+document.querySelectorAll('footer a[href="#"]').forEach(a=>a.addEventListener('click',e=>e.preventDefault()));
+setApp();route();
+</script>
+</body>
+</html>
