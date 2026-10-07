@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sportyfy — Find Your Sports Community</title>
+<meta name="description" content="Temukan teman, komunitas, dan aktivitas olahraga yang cocok untukmu.">
+<meta name="theme-color" content="#0F4D3A">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%230F4D3A'/%3E%3Ctext x='50' y='68' font-size='56' font-weight='800' text-anchor='middle' fill='%23F7F4EC' font-family='Arial'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230F4D3A'/%3E%3Ctext x='50' y='68' font-size='56' font-weight='800' text-anchor='middle' fill='%23F7F4EC' font-family='Arial'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+:root{--green:#0F4D3A;--ivory:#F7F4EC;--char:#1C211F;--sage:#CFDECB;--white:#fff;--r:24px}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--ivory);color:var(--char);padding-bottom:env(safe-area-inset-bottom)}
+h1,h2,h3,.brand{font-family:'Bricolage Grotesque','DM Sans',sans-serif;font-weight:800;letter-spacing:-.03em;line-height:1.02}
+h2{font-size:clamp(2rem,5vw,3.4rem)}
+section{padding:clamp(56px,9vw,110px) 0}
+.navbar{background:rgba(247,244,236,.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(28,33,31,.08);padding-top:max(.5rem,env(safe-area-inset-top))}
+.brand{font-size:1.5rem;color:var(--green)!important}
+.nav-link{color:var(--char)!important;font-weight:500}
+.btn-sp{background:var(--green);color:var(--ivory);border:2px solid var(--green);border-radius:999px;padding:.8rem 1.6rem;font-weight:700;transition:.2s}
+.btn-sp:hover{background:var(--char);border-color:var(--char);color:var(--white);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--green);border:2px solid var(--green);border-radius:999px;padding:.8rem 1.6rem;font-weight:700;transition:.2s}
+.btn-ghost:hover{background:var(--green);color:var(--ivory);transform:translateY(-2px)}
+.btn-light-sp{background:var(--ivory);color:var(--green);border:2px solid var(--ivory);border-radius:999px;padding:.9rem 1.8rem;font-weight:700;transition:.2s}
+.btn-light-sp:hover{background:var(--sage);border-color:var(--sage);transform:translateY(-2px);color:var(--green)}
+.ph-img{position:relative;overflow:hidden;background:var(--sage);border-radius:var(--r)}
+.ph-img img{width:100%;height:100%;object-fit:cover;display:block}
+.ph-img::after{content:attr(data-e);position:absolute;inset:0;display:grid;place-items:center;font-size:3rem;z-index:0}
+.ph-img img{position:relative;z-index:1}
+/* hero */
+.hero{padding-top:clamp(32px,6vw,72px)}
+.hero h1{font-size:clamp(2.6rem,7vw,5rem);color:var(--green)}
+.tag{display:inline-block;background:var(--sage);color:var(--green);font-weight:700;border-radius:999px;padding:.35rem .9rem;margin-bottom:1.2rem}
+.lead-sp{font-size:1.15rem;max-width:34ch;margin:1.4rem 0 2rem;color:#46504b}
+.stack{position:relative;min-height:420px}
+.stack .main{position:absolute;right:0;top:0;width:80%;height:88%}
+.stack .s1{position:absolute;left:0;bottom:0;width:42%;height:36%;border:5px solid var(--ivory)}
+.stack .s2{position:absolute;right:6%;bottom:-4%;width:34%;height:28%;border:5px solid var(--ivory)}
+@media(min-width:992px){.stack{min-height:560px}}
+/* sports */
+.sports-bar{background:var(--white)}
+.sport{height:260px;color:#fff;cursor:pointer;border:0;width:100%;text-align:left;padding:0;transition:.25s}
+.sport:hover{transform:translateY(-4px)}
+.sport.active{outline:4px solid var(--green);outline-offset:3px}
+.sport::before{content:"";position:absolute;inset:0;background:rgba(10,20,15,.38);z-index:2}
+.sport span{position:absolute;left:20px;bottom:18px;z-index:3;font:800 1.5rem 'Bricolage Grotesque',sans-serif}
+.chip{border:1px solid rgba(28,33,31,.15);background:var(--white);border-radius:999px;padding:.4rem 1rem;font-weight:500}
+/* why */
+.why{background:var(--green);color:var(--ivory)}
+.why h2{color:var(--ivory)}
+.why-item{border-top:1px solid rgba(247,244,236,.3);padding-top:1.2rem;height:100%}
+.why-item p{color:var(--sage);margin:0}
+/* communities */
+.com{background:var(--white);border:1px solid rgba(28,33,31,.1);border-radius:var(--r);overflow:hidden;box-shadow:0 6px 20px rgba(28,33,31,.06);transition:.3s;height:100%;display:flex;flex-direction:column}
+.com:hover{transform:translateY(-6px);box-shadow:0 16px 34px rgba(28,33,31,.14)}
+.com .ph-img{border-radius:0;height:220px}
+.com.tall .ph-img{height:340px}
+.com .b{padding:1.2rem 1.3rem 1.4rem;display:flex;flex-direction:column;gap:.35rem;flex:1}
+.com h3{font-size:1.4rem}
+.meta{color:#5c6761;font-size:.95rem}
+.com .btn-ghost{margin-top:auto;align-self:flex-start;padding:.5rem 1.1rem}
+/* steps */
+.step{background:var(--sage);border-radius:var(--r);padding:2rem;height:100%}
+.step .n{font:800 3.4rem 'Bricolage Grotesque';color:var(--green)}
+/* cta */
+.cta{position:relative;border-radius:32px;overflow:hidden;min-height:420px;display:grid;place-items:center;text-align:center;color:#fff;background:var(--green)}
+.cta img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cta::before{content:"";position:absolute;inset:0;background:rgba(10,40,28,.68);z-index:1}
+.cta .in{position:relative;z-index:2;padding:2rem}
+.cta h2{max-width:14ch;margin:0 auto 1.6rem}
+footer{background:var(--char);color:#cfd6d1;padding:56px 0 calc(32px + env(safe-area-inset-bottom))}
+footer a{color:#cfd6d1;text-decoration:none}footer a:hover{color:#fff}
+.soc a{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:50%;border:1px solid #4a5550;margin-right:8px;font-weight:700}
+.rv{opacity:0;transform:translateY(18px);transition:.7s}.rv.in{opacity:1;transform:none}
+a:focus-visible,button:focus-visible{outline:3px solid #7fb69a;outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand brand" href="#home">Sportyfy</a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-label="Buka menu"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link" href="#sports">Sports</a></li>
+        <li class="nav-item"><a class="nav-link" href="#why">Why Sportyfy</a></li>
+        <li class="nav-item"><a class="nav-link" href="#communities">Communities</a></li>
+        <li class="nav-item"><a class="nav-link" href="#how">How It Works</a></li>
+      </ul>
+      <a href="#communities" class="btn btn-sp mt-2 mt-lg-0">Explore Communities</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="home">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <span class="tag">Find. Join. Play.</span>
+        <h1>Find Your Sport. Find Your People.</h1>
+        <p class="lead-sp">Sportyfy mempertemukanmu dengan teman, komunitas, dan aktivitas olahraga yang cocok dengan minatmu.</p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="#communities" class="btn btn-sp">Explore Communities</a>
+          <a href="#how" class="btn btn-ghost">How It Works</a>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="stack">
+          <div class="ph-img main" data-e="🏸"><img alt="Anak muda bermain badminton" data-k="badminton"></div>
+          <div class="ph-img s1" data-e="🏃"><img alt="Pelari di pagi hari" data-k="running"></div>
+          <div class="ph-img s2" data-e="🛹"><img alt="Skateboarder di taman kota" data-k="skateboard"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="sports" class="sports-bar">
+  <div class="container">
+    <h2 class="mb-2 rv">Explore Sports</h2>
+    <p class="meta mb-4 rv">Pilih olahraga untuk memfilter komunitas di bawah.</p>
+    <div class="row g-3" id="sportGrid"></div>
+  </div>
+</section>
+
+<section id="why" class="why">
+  <div class="container">
+    <h2 class="mb-5 rv">Why Sportyfy?</h2>
+    <div class="row g-4">
+      <div class="col-6 col-lg-3 rv"><div class="why-item"><h3 class="h4 mb-2">Find Your People</h3><p>Temukan teman dengan minat olahraga yang sama.</p></div></div>
+      <div class="col-6 col-lg-3 rv"><div class="why-item"><h3 class="h4 mb-2">Discover Communities</h3><p>Temukan komunitas olahraga di sekitarmu.</p></div></div>
+      <div class="col-6 col-lg-3 rv"><div class="why-item"><h3 class="h4 mb-2">Join Activities</h3><p>Ikut aktivitas olahraga bersama.</p></div></div>
+      <div class="col-6 col-lg-3 rv"><div class="why-item"><h3 class="h4 mb-2">Easy &amp; Connected</h3><p>Semua informasi aktivitas dalam satu platform.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="communities">
+  <div class="container">
+    <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+      <h2 class="m-0 rv">Featured Communities</h2>
+      <button class="chip" id="resetF">Tampilkan semua</button>
+    </div>
+    <div class="row g-4 align-items-stretch" id="comGrid"></div>
+    <p class="meta mt-4 d-none" id="empty">Belum ada komunitas untuk olahraga ini. Coba pilih olahraga lain.</p>
+  </div>
+</section>
+
+<section id="how" style="background:var(--white)">
+  <div class="container">
+    <h2 class="mb-5 rv">How It Works</h2>
+    <div class="row g-4">
+      <div class="col-md-4 rv"><div class="step"><div class="n">01</div><h3 class="h3">Explore</h3><p class="mb-0">Cari olahraga atau komunitas yang kamu suka.</p></div></div>
+      <div class="col-md-4 rv"><div class="step"><div class="n">02</div><h3 class="h3">Connect</h3><p class="mb-0">Temukan orang dan komunitas dengan minat yang sama.</p></div></div>
+      <div class="col-md-4 rv"><div class="step"><div class="n">03</div><h3 class="h3">Join</h3><p class="mb-0">Gabung dan mulai olahraga bersama.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="cta rv">
+      <img alt="Sekelompok teman bermain futsal bersama" data-k="futsal">
+      <div class="in">
+        <h2>Ready to find your sports community?</h2>
+        <a href="#communities" class="btn btn-light-sp">Explore Sportyfy</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-5"><div class="brand text-white mb-2">Sportyfy</div><p>Find Your Sports Community.</p>
+        <div class="soc"><a href="#" aria-label="Instagram">IG</a><a href="#" aria-label="X">X</a><a href="#" aria-label="TikTok">TT</a><a href="#" aria-label="YouTube">YT</a></div></div>
+      <div class="col-6 col-lg-2"><strong class="text-white">About</strong><ul class="list-unstyled mt-2"><li><a href="#why">Why Sportyfy</a></li><li><a href="#how">How It Works</a></li></ul></div>
+      <div class="col-6 col-lg-2"><strong class="text-white">Explore</strong><ul class="list-unstyled mt-2"><li><a href="#sports">Sports</a></li><li><a href="#communities">Communities</a></li></ul></div>
+      <div class="col-lg-3"><strong class="text-white">Contact</strong><ul class="list-unstyled mt-2"><li><a href="mailto:hello@sportyfy.id">hello@sportyfy.id</a></li></ul></div>
+    </div>
+    <hr style="border-color:#3a4440"><small>© 2026 Sportyfy. Semua hak dilindungi.</small>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+const img=(k,i,w=700,h=520)=>`https://loremflickr.com/${w}/${h}/${k}?lock=${i}`;
+const sports=[["Badminton","🏸","badminton"],["Futsal","⚽","futsal"],["Basketball","🏀","basketball"],["Running","🏃","running"],["Skateboard","🛹","skateboard"],["Volleyball","🏐","volleyball"]];
+const coms=[
+ {n:"Solo Runners",s:"Running",k:"running",l:"Yogyakarta",m:128,w:6,tall:1},
+ {n:"Solo Badminton Community",s:"Badminton",k:"badminton",l:"Surakarta",m:94,w:6},
+ {n:"Skateboard Solo",s:"Skateboard",k:"skateboard",l:"Surakarta",m:67,w:5},
+ {n:"Solo Futsal Squad",s:"Futsal",k:"futsal",l:"Sleman",m:152,w:7,tall:1},
+ {n:"Hoops Jogja",s:"Basketball",k:"basketball",l:"Yogyakarta",m:81,w:6},
+ {n:"Spike Club Kampus",s:"Volleyball",k:"volleyball",l:"Bantul",m:59,w:6}
+];
+const emoji=Object.fromEntries(sports.map(x=>[x[0],x[1]]));
+document.getElementById('sportGrid').innerHTML=sports.map((x,i)=>`<div class="col-6 col-md-4"><button class="sport ph-img" data-e="${x[1]}" data-s="${x[0]}" aria-pressed="false"><img alt="Olahraga ${x[0]}" data-k="${x[2]}" data-i="${i}"><span>${x[1]} ${x[0]}</span></button></div>`).join('');
+const grid=document.getElementById('comGrid');
+function render(f){
+  const list=f?coms.filter(c=>c.s===f):coms;
+  grid.innerHTML=list.map((c,i)=>`<div class="col-md-${c.w} rv"><article class="com ${c.tall?'tall':''}"><div class="ph-img" data-e="${emoji[c.s]}"><img alt="Komunitas ${c.n}" data-k="${c.k}" data-i="${i+20}"></div><div class="b"><h3>${c.n}</h3><div class="meta">${emoji[c.s]} ${c.s} · ${c.l}</div><div class="meta">${c.m} anggota</div><a href="#" class="btn btn-ghost">View Community</a></div></article></div>`).join('');
+  document.getElementById('empty').classList.toggle('d-none',list.length>0);
+  hydrate();reveal();
+}
+function hydrate(){document.querySelectorAll('img[data-k]:not([src])').forEach(el=>{el.onerror=()=>el.remove();el.loading='lazy';el.src=img(el.dataset.k,el.dataset.i||el.dataset.k.length+3)})}
+let io;function reveal(){io=io||new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.rv:not(.in)').forEach(el=>io.observe(el))}
+document.querySelectorAll('.btn-sp,.btn-ghost,.btn-light-sp').forEach(b=>{if(b.getAttribute('href')==='#')b.addEventListener('click',e=>e.preventDefault())});
+document.getElementById('sportGrid').addEventListener('click',e=>{
+  const b=e.target.closest('.sport');if(!b)return;
+  const on=b.classList.contains('active');
+  document.querySelectorAll('.sport').forEach(x=>{x.classList.remove('active');x.setAttribute('aria-pressed','false')});
+  if(!on){b.classList.add('active');b.setAttribute('aria-pressed','true')}
+  render(on?null:b.dataset.s);
+  document.getElementById('communities').scrollIntoView({behavior:'smooth'});
+});
+document.getElementById('resetF').onclick=()=>{document.querySelectorAll('.sport').forEach(x=>x.classList.remove('active'));render(null)};
+document.querySelectorAll('.nav-link,.navbar .btn').forEach(a=>a.addEventListener('click',()=>{const n=document.getElementById('nav');if(n.classList.contains('show'))bootstrap.Collapse.getOrCreateInstance(n).hide()}));
+render(null);hydrate();reveal();
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+</script>
+</body>
+</html>
