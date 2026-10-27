@@ -302,7 +302,7 @@ footer h3{font-size:1rem;color:#fff;letter-spacing:0;margin-bottom:.8rem}
       </div>
       <div class="col-6 col-lg-2"><h3>About</h3><a href="#why">Why Sportyfy</a><br><a href="#how">How It Works</a></div>
       <div class="col-6 col-lg-2"><h3>Explore</h3><a href="#sports">Sports</a><br><a href="#communities">Communities</a><br><a href="#/blog">Blog</a></div>
-      <div class="col-lg-3"><h3>Contact</h3><a href="mailto:hellosportyfy@gmail.com">hellosportyfy@gmai.com</a></div>
+      <div class="col-lg-3"><h3>Contact</h3><a href="mailto:hellosportyfy@gmail.com">hellosportyfy@gmail.com</a></div>
     </div>
     <hr style="border-color:#26376a;margin:2rem 0 1rem"><small>© 2026 Sportyfy. Semua hak dilindungi.</small>
   </div>
@@ -332,23 +332,25 @@ const coms=[
   {n:"Spike Club Kampus",s:"Volleyball",l:"wonogiri",m:2,v:"n",img:"foto/voli.jpg"}
 ];
 const CAT={"Sports Tips":["#B6F23A","#0A1A44"],"Community":["#1E6BFF","#fff"],"Lifestyle":["#FF7A1A","#0A1A44"],"Beginner Guide":["#19D3F3","#0A1A44"],"Sportyfy News":["#7B4DFF","#fff"]};
+// Properti img = foto artikel di folder foto/. Ganti nama file sesuai fotomu.
 const ARTS=[
- {id:"cara-menemukan-komunitas-olahraga-pemula",t:"Cara Menemukan Komunitas Olahraga yang Cocok untuk Pemula",c:"Beginner Guide",d:"2026-09-24",r:5,k:"running",ex:"Baru mulai olahraga dan bingung harus gabung ke mana? Ikuti langkah sederhana ini untuk menemukan komunitas yang pas.",
+ {id:"cara-menemukan-komunitas-olahraga-pemula",t:"Cara Menemukan Komunitas Olahraga yang Cocok untuk Pemula",c:"Beginner Guide",d:"2026-09-24",r:5,k:"running",img:"foto/blog-komunitas-pemula.jpg",ex:"Baru mulai olahraga dan bingung harus gabung ke mana? Ikuti langkah sederhana ini untuk menemukan komunitas yang pas.",
   b:["Mulai olahraga sendirian sering terasa berat. Komunitas membuatnya lebih mudah karena ada teman, jadwal, dan alasan untuk datang. Masalahnya, tidak semua komunitas cocok untuk pemula.","### 1. Pilih olahraga yang paling kamu penasaran","Jangan mulai dari yang paling populer. Pilih yang terasa menyenangkan, entah itu lari santai, badminton, atau futsal. Kamu lebih mudah konsisten dengan olahraga yang kamu nikmati.","### 2. Cari komunitas di sekitarmu","Lokasi menentukan seberapa sering kamu bisa hadir. Pilih komunitas yang bisa dijangkau dalam 20 sampai 30 menit dari kampus atau tempat tinggal.","### 3. Cek apakah ramah pemula","Lihat apakah ada sesi untuk semua level, jadwal yang jelas, dan anggota yang terbuka menyambut orang baru. Datang sekali sebagai percobaan sebelum memutuskan bergabung.","Dengan Sportyfy, kamu bisa menjelajahi komunitas olahraga di sekitarmu dan langsung bergabung lewat aplikasi."]},
- {id:"5-manfaat-bergabung-komunitas-olahraga",t:"5 Manfaat Bergabung dengan Komunitas Olahraga",c:"Community",d:"2026-09-18",r:4,k:"volleyball",ex:"Bukan hanya soal badan yang bugar. Ini lima alasan komunitas membuat olahragamu lebih bertahan lama.",
+ {id:"5-manfaat-bergabung-komunitas-olahraga",t:"5 Manfaat Bergabung dengan Komunitas Olahraga",c:"Community",d:"2026-09-18",r:4,k:"volleyball",img:"foto/blog-manfaat-komunitas.jpg",ex:"Bukan hanya soal badan yang bugar. Ini lima alasan komunitas membuat olahragamu lebih bertahan lama.",
   b:["Olahraga dalam kelompok sering terasa lebih ringan daripada sendirian. Berikut lima manfaat yang paling sering dirasakan anggota komunitas.","### 1. Lebih konsisten","Jadwal bersama dan teman yang menunggu membuatmu lebih sulit membatalkan rencana.","### 2. Dapat teman baru","Kamu bertemu orang dengan minat yang sama, dan obrolan terasa lebih mudah dimulai.","### 3. Lebih termotivasi","Melihat teman berkembang bisa memberi dorongan untuk ikut berkembang.","### 4. Belajar dari yang lebih berpengalaman","Anggota lain bisa berbagi teknik, tips, dan rekomendasi perlengkapan.","### 5. Olahraga jadi lebih seru","Permainan, tantangan, dan tawa membuat sesi latihan terasa seperti hiburan, bukan kewajiban."]},
- {id:"olahraga-bareng-teman-vs-sendiri",t:"Olahraga Bareng Teman vs Sendiri, Mana yang Lebih Seru?",c:"Lifestyle",d:"2026-09-10",r:4,k:"futsal",ex:"Dua-duanya punya kelebihan. Kenali kapan cocok berolahraga sendiri dan kapan lebih enak bareng-bareng.",
+ {id:"olahraga-bareng-teman-vs-sendiri",t:"Olahraga Bareng Teman vs Sendiri, Mana yang Lebih Seru?",c:"Lifestyle",d:"2026-09-10",r:4,k:"futsal",img:"foto/blog-bareng-vs-sendiri.jpg",ex:"Dua-duanya punya kelebihan. Kenali kapan cocok berolahraga sendiri dan kapan lebih enak bareng-bareng.",
   b:["Tidak ada jawaban tunggal. Keduanya punya tempat masing-masing dalam rutinitas olahraga.","### Olahraga sendiri","Kamu bebas menentukan waktu dan tempo. Cocok untuk lari pagi, latihan ringan, atau saat jadwalmu padat.","### Olahraga bareng teman","Suasananya lebih hidup dan kamu punya tanggung jawab untuk datang. Olahraga tim seperti futsal, voli, dan basket memang paling seru dimainkan bersama.","### Kombinasi terbaik","Banyak orang memadukan keduanya: latihan mandiri di hari biasa, lalu bermain bersama komunitas di akhir pekan. Coba dua-duanya dan lihat mana yang paling cocok."]},
- {id:"rekomendasi-olahraga-untuk-pemula",t:"Rekomendasi Olahraga untuk Kamu yang Baru Mulai",c:"Sports Tips",d:"2026-09-02",r:5,k:"badminton",ex:"Bingung mau mulai dari mana? Ini beberapa olahraga yang mudah dicoba dan tidak butuh banyak perlengkapan.",
+ {id:"rekomendasi-olahraga-untuk-pemula",t:"Rekomendasi Olahraga untuk Kamu yang Baru Mulai",c:"Sports Tips",d:"2026-09-02",r:5,k:"badminton",img:"foto/blog-olahraga-pemula.jpg",ex:"Bingung mau mulai dari mana? Ini beberapa olahraga yang mudah dicoba dan tidak butuh banyak perlengkapan.",
   b:["Memulai kebiasaan olahraga paling mudah dengan pilihan yang sederhana dan terjangkau.","### Lari santai","Cukup sepatu yang nyaman. Mulai dengan jarak pendek dan tambah pelan-pelan.","### Badminton","Mudah dipelajari dan bisa dimainkan berpasangan. Banyak lapangan dan komunitas yang menerima pemula.","### Futsal","Seru dimainkan ramai-ramai. Tidak perlu jago untuk ikut bermain santai.","### Voli","Cocok untuk kamu yang suka kerja tim dan permainan yang cepat.","Dengarkan tubuhmu, mulai pelan, dan jangan lupa pemanasan. Kalau punya kondisi kesehatan tertentu, konsultasikan dulu dengan tenaga kesehatan."]},
- {id:"sportyfy-temukan-komunitas-olahraga",t:"Sportyfy: Temukan Komunitas Olahraga di Sekitarmu",c:"Sportyfy News",d:"2026-08-28",r:3,k:"basketball",ex:"Kenalan dengan Sportyfy, platform untuk menemukan teman, komunitas, dan aktivitas olahraga.",
+ {id:"sportyfy-temukan-komunitas-olahraga",t:"Sportyfy: Temukan Komunitas Olahraga di Sekitarmu",c:"Sportyfy News",d:"2026-08-28",r:3,k:"basketball",img:"foto/blog-sportyfy.jpg",ex:"Kenalan dengan Sportyfy, platform untuk menemukan teman, komunitas, dan aktivitas olahraga.",
   b:["Sportyfy dibuat untuk membantu orang menemukan komunitas olahraga yang sesuai minat, terutama mahasiswa dan anak muda yang ingin rutin bergerak tetapi belum punya teman olahraga.","### Apa yang bisa kamu lakukan","Jelajahi berbagai olahraga, temukan komunitas di sekitarmu, lalu gabung dan ikut aktivitasnya lewat aplikasi.","### Untuk komunitas","Komunitas olahraga juga bisa mendapatkan anggota baru dan membagikan jadwal aktivitas dalam satu tempat.","Website ini adalah pintu masuk. Untuk bergabung dan melihat detail aktivitas, lanjutkan ke aplikasi Sportyfy."]}
 ];
 const fmt=d=>new Date(d).toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric'});
 const catSty=c=>`--ac:${CAT[c][0]};--tx:${CAT[c][1]}`;
-const img=(k,i,e,alt,w,eager)=>`<div class="ph" data-e="${e}"><img alt="${alt}" data-k="${k}" data-i="${i}" data-w="${w}"${eager?' data-eager':''}></div>`;
+// Foto lokal dari folder foto/. Kalau file tidak ada, gambar dihapus dan emoji cadangan tampil.
+const img=(src,e,alt,eager)=>`<div class="ph" data-e="${e}"><img src="${src}" alt="${alt}"${eager?'':' loading="lazy"'} onerror="this.remove()"></div>`;
 const EM={running:"🏃",volleyball:"🏐",futsal:"⚽",badminton:"🏸",basketball:"🏀"};
-const card=a=>`<div class="col-md-6 col-lg-4 rv"><a class="bc zoom" style="${catSty(a.c)}" href="#/blog/${a.id}">${img(a.k,a.id.length,EM[a.k],'Ilustrasi artikel: '+a.t,640)}<div class="bd"><span class="cat">${a.c}</span><h3>${a.t}</h3><p>${a.ex}</p><span class="dt mt-auto">${fmt(a.d)} · ${a.r} menit baca</span></div></a></div>`;
+const card=a=>`<div class="col-md-6 col-lg-4 rv"><a class="bc zoom" style="${catSty(a.c)}" href="#/blog/${a.id}">${img(a.img,EM[a.k],'Ilustrasi artikel: '+a.t)}<div class="bd"><span class="cat">${a.c}</span><h3>${a.t}</h3><p>${a.ex}</p><span class="dt mt-auto">${fmt(a.d)} · ${a.r} menit baca</span></div></a></div>`;
 
 function hydrate(){document.querySelectorAll('img[data-k]:not([src])').forEach(el=>{el.onerror=()=>el.remove();if(!el.hasAttribute('data-eager'))el.loading='lazy';else el.fetchPriority='high';el.decoding='async';el.src=photo(el.dataset.k,el.dataset.i,+el.dataset.w||720)})}
 let io;function reveal(){io=io||new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll('.rv:not(.in)').forEach(el=>io.observe(el))}
@@ -364,7 +366,7 @@ function renderBlog(){
   $('#filters').innerHTML=['Semua',...Object.keys(CAT)].map(c=>`<button class="fp${c===cat?' on':''}" data-c="${c}" aria-pressed="${c===cat}">${c}</button>`).join('');
   const list=cat==='Semua'?ARTS:ARTS.filter(a=>a.c===cat);
   const f=cat==='Semua'?ARTS[0]:null, rest=f?list.slice(1):list;
-  $('#featBox').innerHTML=f?`<a class="feat zoom" style="${catSty(f.c)}" href="#/blog/${f.id}">${img(f.k,f.id.length,EM[f.k],'Gambar utama: '+f.t,900,1)}<div class="bd"><span class="cat">Featured · ${f.c}</span><h2>${f.t}</h2><p>${f.ex}</p><span class="dt">${fmt(f.d)} · ${f.r} menit baca</span></div></a>`:'';
+  $('#featBox').innerHTML=f?`<a class="feat zoom" style="${catSty(f.c)}" href="#/blog/${f.id}">${img(f.img,EM[f.k],'Gambar utama: '+f.t,1)}<div class="bd"><span class="cat">Featured · ${f.c}</span><h2>${f.t}</h2><p>${f.ex}</p><span class="dt">${fmt(f.d)} · ${f.r} menit baca</span></div></a>`:'';
   $('#blogGrid').innerHTML=rest.length?rest.map(card).join(''):'<p>Belum ada artikel di kategori ini.</p>';
   hydrate();reveal();
 }
@@ -373,7 +375,7 @@ $('#filters').addEventListener('click',e=>{const b=e.target.closest('.fp');if(b)
 // artikel
 function renderArt(a){
   const body=a.b.map(p=>p.startsWith('### ')?`<h3>${p.slice(4)}</h3>`:`<p>${p}</p>`).join('');
-  $('#artBox').innerHTML=`<a class="back" href="#/blog">← Semua artikel</a><div class="prose mt-4 mb-4" style="${catSty(a.c)}"><span class="cat">${a.c}</span><h1 class="mt-3 mb-3" style="font-size:clamp(2rem,5vw,3.4rem)">${a.t}</h1><span class="dt">${fmt(a.d)} · ${a.r} menit baca</span></div>${img(a.k,a.id.length,EM[a.k],'Gambar artikel: '+a.t,1100,1).replace('class="ph"','class="ph art-hero"')}<article class="prose mt-5">${body}</article><div class="ctab"><h3>Ready to find your community?</h3><a data-app class="btn-x btn-lime">Find Your Community →</a></div>`;
+  $('#artBox').innerHTML=`<a class="back" href="#/blog">← Semua artikel</a><div class="prose mt-4 mb-4" style="${catSty(a.c)}"><span class="cat">${a.c}</span><h1 class="mt-3 mb-3" style="font-size:clamp(2rem,5vw,3.4rem)">${a.t}</h1><span class="dt">${fmt(a.d)} · ${a.r} menit baca</span></div>${img(a.img,EM[a.k],'Gambar artikel: '+a.t,1).replace('class="ph"','class="ph art-hero"')}<article class="prose mt-5">${body}</article><div class="ctab"><h3>Ready to find your community?</h3><a data-app class="btn-x btn-lime">Find Your Community →</a></div>`;
   $('#related').innerHTML=ARTS.filter(x=>x.id!==a.id).slice(0,3).map(card).join('');
   setApp();hydrate();reveal();
   let ld=$('#ld');if(!ld){ld=document.createElement('script');ld.type='application/ld+json';ld.id='ld';document.head.appendChild(ld)}
